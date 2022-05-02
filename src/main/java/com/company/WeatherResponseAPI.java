@@ -7,6 +7,7 @@ import org.springframework.web.reactive.function.client.WebClientResponseExcepti
 import reactor.core.publisher.Mono;
 
 public class WeatherResponseAPI {
+	// TODO optimize functions
 	public static WeatherResponse getWeatherResponse(String location) {
 		WebClient client = WebClient
 				.create("https://api.openweathermap.org/data/2.5/weather?q=" + location +
