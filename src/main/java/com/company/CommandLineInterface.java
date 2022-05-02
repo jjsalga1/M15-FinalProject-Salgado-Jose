@@ -1,7 +1,7 @@
 package com.company;
 
-import com.company.cryptocurrency.CoinResponse;
-import com.company.iss.IssResponse;
+import com.company.cryptocurrency.CryptoResponse;
+import com.company.iss.SpaceResponse;
 import com.company.weather.WeatherResponse;
 
 import java.util.Scanner;
@@ -33,8 +33,8 @@ public class CommandLineInterface {
 
     public static void main(String[] args) {
         WeatherResponseAPI weatherResponseAPI = new WeatherResponseAPI();
-        IssResponseAPI issResponseAPI = new IssResponseAPI();
-        CoinResponseAPI coinResponseAPI = new CoinResponseAPI();
+        SpaceResponseAPI spaceResponseAPI = new SpaceResponseAPI();
+        CryptoResponseAPI cryptoResponseAPI = new CryptoResponseAPI();
 
         Scanner scanner = new Scanner(System.in);
         printToolTitle();
@@ -66,7 +66,7 @@ public class CommandLineInterface {
                         break;
                     case 2:
                         System.out.println("The current location of the ISS:");
-                        IssResponse issData = issResponseAPI.getIssResponse();
+                        SpaceResponse issData = spaceResponseAPI.getIssResponse();
                         if (issData != null) {
                             WeatherResponse issLocation = weatherResponseAPI.getWeatherResponse(issData);
                             System.out.println("\tCoordinates: " + issData.iss_position.latitude + ", " + issData.iss_position.longitude);
@@ -79,7 +79,7 @@ public class CommandLineInterface {
                         break;
                     case 3:
                         System.out.println("Weather in the location of the ISS:");
-                        IssResponse issLocation = issResponseAPI.getIssResponse();
+                        SpaceResponse issLocation = spaceResponseAPI.getIssResponse();
                         if (issLocation != null) {
                             WeatherResponse issWeather = weatherResponseAPI.getWeatherResponse(issLocation);
                             System.out.println("\tCoordinates: " + issLocation.iss_position.latitude + ", " + issLocation.iss_position.longitude);
@@ -95,7 +95,7 @@ public class CommandLineInterface {
                     case 4:
                         System.out.print("Enter cryptocurrency symbol: ");
                         String symbol = scanner.nextLine().toUpperCase().trim();
-                        CoinResponse coinData = coinResponseAPI.getCoinResponse(symbol);
+                        CryptoResponse coinData = cryptoResponseAPI.getCoinResponse(symbol);
                         if (coinData != null) {
                             System.out.println("\tName: " + coinData.name);
                             System.out.println("\tSymbol: " + coinData.asset_id);

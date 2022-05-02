@@ -1,6 +1,6 @@
 package com.company;
 
-import com.company.iss.IssResponse;
+import com.company.iss.SpaceResponse;
 import com.company.weather.*;
 import org.springframework.web.reactive.function.client.WebClient;
 import org.springframework.web.reactive.function.client.WebClientResponseException;
@@ -40,7 +40,7 @@ public class WeatherResponseAPI {
 		return weatherResponse;
 	}
 
-	public static WeatherResponse getWeatherResponse(IssResponse issLocation) {
+	public static WeatherResponse getWeatherResponse(SpaceResponse issLocation) {
 		WebClient client = WebClient
 				.create("https://api.openweathermap.org/data/2.5/weather?" +
 						"lat=" + issLocation.iss_position.latitude +

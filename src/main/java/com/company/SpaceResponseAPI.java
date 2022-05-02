@@ -5,19 +5,19 @@ import org.springframework.web.reactive.function.client.WebClient;
 import org.springframework.web.reactive.function.client.WebClientResponseException;
 import reactor.core.publisher.Mono;
 
-public class IssResponseAPI {
-    public static IssResponse getIssResponse() {
+public class SpaceResponseAPI {
+    public static SpaceResponse getIssResponse() {
         WebClient client = WebClient.create("http://api.open-notify.org/iss-now.json");
 
-        IssResponse issResponse = null;
+        SpaceResponse spaceResponse = null;
 
         try {
-            Mono<IssResponse> response = client
+            Mono<SpaceResponse> response = client
                     .get()
                     .retrieve()
-                    .bodyToMono(IssResponse.class);
+                    .bodyToMono(SpaceResponse.class);
 
-            issResponse = response.share().block();
+            spaceResponse = response.share().block();
         }
         catch (WebClientResponseException we) {
             int statusCode = we.getRawStatusCode();
@@ -33,6 +33,6 @@ public class IssResponseAPI {
             System.out.println("\tAn error occurred: " + e.getMessage());
         }
 
-        return issResponse;
+        return spaceResponse;
     }
 }

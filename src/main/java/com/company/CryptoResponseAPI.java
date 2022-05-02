@@ -5,23 +5,23 @@ import org.springframework.web.reactive.function.client.WebClient;
 import org.springframework.web.reactive.function.client.WebClientResponseException;
 import reactor.core.publisher.Mono;
 
-public class CoinResponseAPI {
-    public static CoinResponse getCoinResponse(String asset) {
+public class CryptoResponseAPI {
+    public static CryptoResponse getCoinResponse(String asset) {
         WebClient client = WebClient.create("https://rest.coinapi.io/v1/assets/" + asset +
                 "?apikey=46263578-4E82-42B4-8C73-D3F2D7623310");
 
-        CoinResponse coinResponse = null;
+        CryptoResponse cryptoResponse = null;
 
         try {
-            Mono<CoinResponse[]> response = client
+            Mono<CryptoResponse[]> response = client
                     .get()
                     .retrieve()
-                    .bodyToMono(CoinResponse[].class);
+                    .bodyToMono(CryptoResponse[].class);
 
-            coinResponse = response.share().block()[0];
+            cryptoResponse = response.share().block()[0];
         }
         catch (ArrayIndexOutOfBoundsException e) {
-            coinResponse = null;
+            cryptoResponse = null;
         }
         catch (WebClientResponseException we) {
             int statusCode = we.getRawStatusCode();
@@ -37,6 +37,6 @@ public class CoinResponseAPI {
             System.out.println("\tAn error occurred: " + e.getMessage());
         }
 
-        return coinResponse;
+        return cryptoResponse;
     }
 }
