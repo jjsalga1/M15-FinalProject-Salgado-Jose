@@ -6,7 +6,7 @@ import org.springframework.web.reactive.function.client.WebClientResponseExcepti
 import reactor.core.publisher.Mono;
 
 public class CryptoResponseAPI {
-    public static CryptoResponse getCoinResponse(String asset) {
+    public CryptoResponse getCoinResponse(String asset) {
         WebClient client = WebClient.create("https://rest.coinapi.io/v1/assets/" + asset +
                 "?apikey=46263578-4E82-42B4-8C73-D3F2D7623310");
 

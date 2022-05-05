@@ -7,8 +7,7 @@ import org.springframework.web.reactive.function.client.WebClientResponseExcepti
 import reactor.core.publisher.Mono;
 
 public class WeatherResponseAPI {
-	// TODO optimize functions
-	public static WeatherResponse getWeatherResponse(String location) {
+	public WeatherResponse getWeatherResponse(String location) {
 		WebClient client = WebClient
 				.create("https://api.openweathermap.org/data/2.5/weather?q=" + location +
 						"&appid=6af3c38b2822faf4017b9256e6973339&units=imperial");
@@ -40,7 +39,7 @@ public class WeatherResponseAPI {
 		return weatherResponse;
 	}
 
-	public static WeatherResponse getWeatherResponse(SpaceResponse issLocation) {
+	public WeatherResponse getWeatherResponse(SpaceResponse issLocation) {
 		WebClient client = WebClient
 				.create("https://api.openweathermap.org/data/2.5/weather?" +
 						"lat=" + issLocation.iss_position.latitude +

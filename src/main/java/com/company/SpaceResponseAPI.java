@@ -6,7 +6,7 @@ import org.springframework.web.reactive.function.client.WebClientResponseExcepti
 import reactor.core.publisher.Mono;
 
 public class SpaceResponseAPI {
-    public static SpaceResponse getIssResponse() {
+    public SpaceResponse getIssResponse() {
         WebClient client = WebClient.create("http://api.open-notify.org/iss-now.json");
 
         SpaceResponse spaceResponse = null;
