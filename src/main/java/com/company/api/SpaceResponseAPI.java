@@ -1,11 +1,20 @@
-package com.company;
+package com.company.api;
 
 import com.company.iss.*;
 import org.springframework.web.reactive.function.client.WebClient;
 import org.springframework.web.reactive.function.client.WebClientResponseException;
 import reactor.core.publisher.Mono;
 
+/**
+ * The {@code SpaceResponseAPI} class contains methods that build and returns
+ * {@code SpaceResponse} objects.
+ */
 public class SpaceResponseAPI {
+    /**
+     * This method returns a SpaceResponse. Using the OpenNotify: Current ISS Location
+     * API http://open-notify.org/Open-Notify-API/, the method finds the ISS coordinates
+     * and returns its information.
+     */
     public SpaceResponse getIssResponse() {
         WebClient client = WebClient.create("http://api.open-notify.org/iss-now.json");
 

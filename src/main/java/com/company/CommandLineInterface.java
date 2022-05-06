@@ -1,12 +1,23 @@
 package com.company;
 
+import com.company.api.CryptoResponseAPI;
+import com.company.api.SpaceResponseAPI;
+import com.company.api.WeatherResponseAPI;
 import com.company.cryptocurrency.CryptoResponse;
 import com.company.iss.SpaceResponse;
 import com.company.weather.WeatherResponse;
 
 import java.util.Scanner;
 
+/**
+ * The {@code CommandLineInterface} class contains methods that execute a command line interface
+ * titled World Info Tool. This program uses multiple APIs that return information about the world.
+ * When ran, the user is presented with a menu, and choices are made with keyboard input.
+ */
 public class CommandLineInterface {
+    /**
+     * This method is used to print the tool's title in ASCII art.
+     */
     static void printToolTitle() {
         String title =
                 "\n" +
@@ -17,6 +28,9 @@ public class CommandLineInterface {
         System.out.println(title + "\n");
     }
 
+    /**
+     * This method is used to neatly print and display the user their choices when the program is run.
+     */
     static void printMenu() {
         String menu =
                 "Select from the following options: (Enter digit 1-6)\n" +
@@ -30,7 +44,11 @@ public class CommandLineInterface {
         System.out.println(menu);
     }
 
-
+    /**
+     * The main method contains the control loop of the program. It consists of a while loop
+     * and a switch statement. Different response API methods are run when a user makes a selection.
+     * This method exits when a user enters 6.
+     */
     public static void main(String[] args) {
         WeatherResponseAPI weatherResponseAPI = new WeatherResponseAPI();
         SpaceResponseAPI spaceResponseAPI = new SpaceResponseAPI();

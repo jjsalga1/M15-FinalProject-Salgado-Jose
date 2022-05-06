@@ -2,6 +2,11 @@ package com.company.weather;
 
 import java.util.List;
 
+/**
+ * The {@code WeatherResponse} class is an object that gets created inside the
+ * WeatherResponseAPI class. Variables represent the JSON response's key-value
+ * pairs.
+ */
 public class WeatherResponse {
     public Coord coord;
     public List<Weather> weather;

@@ -1,12 +1,24 @@
-package com.company;
+package com.company.api;
 
-import com.company.iss.SpaceResponse;
+import com.company.iss.*;
 import com.company.weather.*;
 import org.springframework.web.reactive.function.client.WebClient;
 import org.springframework.web.reactive.function.client.WebClientResponseException;
 import reactor.core.publisher.Mono;
 
+/**
+ * The {@code WeatherResponseAPI} class contains methods that build and returns
+ * {@code WeatherResponse} objects.
+ */
 public class WeatherResponseAPI {
+	/**
+	 * Returns a WeatherResponse object based on the String that is passed into
+	 * the location parameter. Using the OpenWeatherAPI from https://openweathermap.org/api,
+	 * this method finds a city and returns its weather information.
+	 *
+	 * @param  location
+	 *         String that is the city location.
+	 */
 	public WeatherResponse getWeatherResponse(String location) {
 		WebClient client = WebClient
 				.create("https://api.openweathermap.org/data/2.5/weather?q=" + location +
@@ -39,6 +51,11 @@ public class WeatherResponseAPI {
 		return weatherResponse;
 	}
 
+	/**
+	 * Returns a WeatherResponse object based on the SpaceResponse that is passed into
+	 * the issLocation parameter. Using the OpenWeatherAPI from https://openweathermap.org/api,
+	 * this method uses ISS coordinates and returns the weather information of its position.
+	 */
 	public WeatherResponse getWeatherResponse(SpaceResponse issLocation) {
 		WebClient client = WebClient
 				.create("https://api.openweathermap.org/data/2.5/weather?" +
