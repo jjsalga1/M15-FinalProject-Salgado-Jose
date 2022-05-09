@@ -1,5 +1,6 @@
 package com.company;
 
+import com.company.ascii.Video;
 import com.company.cryptocurrency.CryptoResponse;
 import com.company.iss.SpaceResponse;
 import com.company.weather.WeatherResponse;
@@ -26,12 +27,16 @@ public class CommandLineInterface {
                 "\t4. Current Cryptocurrency Prices\n" +
                 "\t5. Display Option Menu\n" +
                 "\t6. Exit\n" +
+                "\t7. Watch New on Netflix | May 2022 (40 seconds)\n" +
                 "Select option 5 or type 'help' to display option menu.\n";
         System.out.println(menu);
     }
 
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
+        Video.netflixIntroThreads();
+
+        Thread.sleep(4000); // Wait for intro to end
         WeatherResponseAPI weatherResponseAPI = new WeatherResponseAPI();
         SpaceResponseAPI spaceResponseAPI = new SpaceResponseAPI();
         CryptoResponseAPI cryptoResponseAPI = new CryptoResponseAPI();
@@ -111,11 +116,19 @@ public class CommandLineInterface {
                         System.out.println("Exiting world-info-tool...");
                         running = false;
                         break;
+                    case 7:
+                        Video.netflixMayThreads();
+                        Thread.sleep(40000);
+                        printToolTitle();
+                        printMenu();
+                        break;
                     default:
                         System.out.println("Invalid Selection. (Enter digit 1-6 or type 'help')");
                 }
             } catch (NumberFormatException e) {
                 System.out.println("Invalid Selection. (Enter digit 1-6 or type 'help')");
+            } catch (Exception e) {
+                System.out.println("Selection failed. Please try again.");
             }
         }
     }
