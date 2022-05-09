@@ -25,3 +25,11 @@ Uses the Spring Reactive Web dependency to connect to multiple REST APIs and ret
 - FFmpeg
 - Frame and audio extraction
 - Javax Sound
+
+# APIs
+### CoinAPI (https://www.coinapi.io/)
+- Grabs information on current Cryptocurrency prices.
+### OpenWeather API (https://openweathermap.org/api)
+- Grabs the weather conditions in a location.
+### Open Notify: Current ISS Location (http://open-notify.org/Open-Notify-API/)
+- Sends the current location of the International Space Station in latitude and longitude.
